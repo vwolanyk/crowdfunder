@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
   root "projects#index"
 
-  resources :projects, only: [:index, :new, :create, :show]
-  resources :users, only: [:new, :create]
+  resources :projects, only: [:index, :new, :create, :show] do
+    resources :comments
+  end
+  resources :users, only: [:new, :create] do
+    resources :comments
+  end
+
   resources :user_sessions, only: [:new, :create, :destroy]
 
   get 'login' => 'user_sessions#new', :as => :login
