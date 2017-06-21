@@ -8,8 +8,10 @@ class Pledge < ApplicationRecord
 
   def validuser
 
-    if project.owner == user_id
-      return false
+    if project.owner == user
+      errors.add(:user, 'You cannot back your own project!')
+
+    end
 
   end
 end
