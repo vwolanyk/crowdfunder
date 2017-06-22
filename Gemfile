@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+# From project instructions
+gem 'kaminari'
+
 # Core Project
 gem 'rails', '~> 5.1.1'
 gem 'puma', '~> 3.0'
