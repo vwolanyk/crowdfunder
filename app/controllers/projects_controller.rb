@@ -2,12 +2,13 @@ class ProjectsController < ApplicationController
   before_action :require_login, only: [:new, :create]
 
   def index
-    @projects = Project.all
+    @projects = Project.page(params[:page]).per(10)
     @projects = @projects.order(:end_date)
   end
 
   def show
     @project = Project.find(params[:id])
+    # Kaminari code addition:           .page(params[:page]).per(10)
   end
 
   def new
