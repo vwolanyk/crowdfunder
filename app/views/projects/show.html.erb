@@ -9,7 +9,18 @@
 <p>Fundraising starts: <%= @project.start_date.strftime("%A %b %d %Y") %></p>
 <p>Deadline: <%= @project.end_date.strftime("%A %b %d %Y") %></p>
 
-<%= form_for [@project, Pledge.new] do |f| %>
+<%= form_for [@project, @pledge] do |f| %>
+<% if @pledge.errors.any? %>
+    <div id="error_explanation">
+      <h3>There are <%= @pledge.errors.count %> issues, please try again:</h3>
+      <ol>
+      <% @pledge.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ol>
+    </div>
+  <% end %>
+
   <%= f.number_field :dollar_amount, value: @project.rewards.minimum(:dollar_amount), step: 0.01 %>
   <%= f.submit "Pledge" %>
 <% end %>
