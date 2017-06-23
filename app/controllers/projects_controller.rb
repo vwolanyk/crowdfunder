@@ -8,7 +8,6 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
-    # Kaminari code addition:           .page(params[:page]).per(10)
   end
 
   def new
