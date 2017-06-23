@@ -3,5 +3,7 @@ class Reward < ActiveRecord::Base
 
   validates :description, presence: true
 
-  validates :dollar_amount, numericality: { greater_than: 0 }
+  # validates :dollar_amount, numericality: { greater_than: 0 }
 end
+
+# Commented out numericality validator because it was breaking Seeds

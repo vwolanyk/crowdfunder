@@ -2,7 +2,7 @@ class ProjectsController < ApplicationController
   before_action :require_login, only: [:new, :create]
 
   def index
-    @projects = Project.all
+    @projects = Project.page(params[:page]).per(10)
     @projects = @projects.order(:end_date)
   end
 
