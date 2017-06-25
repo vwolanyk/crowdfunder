@@ -18,6 +18,7 @@ class ProjectsController < ApplicationController
 
   def create
     @project = Project.new(project_params)
+    @project.owner = current_user
 
     if @project.save
 

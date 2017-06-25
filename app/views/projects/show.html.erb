@@ -21,8 +21,13 @@
     </div>
   <% end %>
 
+<!--Does not Show up if User is Project owner  -->
+<% console %>
+<% if @project.owner != current_user %>
+
   <%= f.number_field :dollar_amount, value: @project.rewards.minimum(:dollar_amount), step: 0.01 %>
   <%= f.submit "Pledge" %>
+<% end %>
 <% end %>
 
 <h2>Rewards</h2>

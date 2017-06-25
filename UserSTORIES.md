@@ -22,14 +22,15 @@ As a user, when I go to a project’s page, it should tell me if I have already 
 As a user, when I go to a project’s page, it should tell me how much time is left until the funding deadline (like it does on the project index currently)
 
 
-**Validations**
+
+<!-- **Validations**
 
 dollar_amount should be a required field for pledges
 Project start date must be in future
 Project end date must be later than start date
 A project's goal must be positive number
 Reward dollar_amount must be positive number
-Add error messages to the project, pledge, sign up, and login forms so that if any validations fail the user can see what went wrong
+Add error messages to the project, pledge, sign up, and login forms so that if any validations fail the user can see what went wrong -->
 
 
 **Accounts**

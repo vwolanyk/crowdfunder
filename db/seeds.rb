@@ -8,8 +8,8 @@ Project.destroy_all
               title: Faker::App.name,
               description: Faker::Lorem.paragraph,
               goal: rand(100000),
-              start_date: Time.now.utc - rand(60).days,
-              end_date: Time.now.utc + rand(10).days
+              start_date: Time.now.utc,
+              end_date: Time.now.utc + rand(20).days
             )
 
   5.times do
