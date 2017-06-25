@@ -9,6 +9,8 @@ class ProjectsController < ApplicationController
   def show
     @project = Project.find(params[:id])
     @pledge = Pledge.new
+    @owner = @project.owner
+    @comment = Comment.new
   end
 
   def new

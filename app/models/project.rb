@@ -1,4 +1,5 @@
 class Project < ActiveRecord::Base
+  has_many :comments
   has_many :rewards
   has_many :pledges
   has_many :backers, through: :pledges, source: :user

@@ -9,7 +9,8 @@ Project.destroy_all
               description: Faker::Lorem.paragraph,
               goal: rand(100000),
               start_date: Time.now.utc,
-              end_date: Time.now.utc + rand(20).days
+              end_date: Time.now.utc + rand(20).days,
+              owner: User.first
             )
 
   5.times do
@@ -34,7 +35,7 @@ end
   project = Project.all.sample
 
   Pledge.create!(
-    user: User.all.sample,
+    user: User.last,
     project: project,
     dollar_amount: project.rewards.sample.dollar_amount + rand(10)
   )
