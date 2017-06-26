@@ -25,7 +25,7 @@
 <% end %>
 
 <h2>Comments</h2>
-    <% @project.comments.each do |comment| %>
+    <% @project.comments.reverse.each do |comment| %>
       <% if comment.user != @project.owner %>
       <ul>
         <li>  <p><em><%= comment.created_at.strftime("%B %d,%Y") %></em> :   <strong><%= comment.comment_text %></strong> </p>
