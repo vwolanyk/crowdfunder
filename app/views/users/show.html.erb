@@ -2,9 +2,13 @@
 
 <p>Member since <%= @user.created_at.strftime("%A %B %d %Y") %> </p>
 
+<%# Could require a user/pledge association: %>
 <p>Total contributions: </p>
 
 <p>Contact me at <%= mail_to @user.email, @user.email %></p>
+
+<hr>
+<%# These 'hr' lines are just a visual aid for while the page is un-CSS'd. %>
 
 <h2>Projects I Own</h2>
 
@@ -18,13 +22,14 @@
 
       <%= link_to project.title, project %>
 
-      Deadline:
-      <%= project.end_date.strftime("%A %b %d %Y") %>
+      Deadline: <%= project.end_date.strftime("%A %b %d %Y") %>
 
     </li>
     <hr>
 </ul>
 
+<%# Might need to create a 'backed_projects' association for this: %>
 <h2>Projects I've Backed</h2>
+<%# Iterate the same way the owned_projects one did? %>
 Project:
 I pledged:
