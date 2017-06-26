@@ -10,10 +10,34 @@
 <p>Fundraising starts: <%= @project.start_date.strftime("%A %b %d %Y") %></p>
 <p>Deadline: <%= @project.end_date.strftime("%A %b %d %Y") %></p>
 
-<if @project.owner == current_user %>
+<% if @project.comments.where(:user => @project.owner).exists? %>
+<h2>Project Updates</h2>
+    <% @project.comments.each do |comment| %>
+      <% if comment.user == @project.owner %>
+      <ul>
+        <li>  <p><%= comment.created_at.strftime("%B %d,%Y") %></p>
+              <p><%= comment.comment_text %></p>
+        </li>
+      </ul>
+      <% end %>
+    <% end %>
+<% end %>
+
+<h2>Comments</h2>
+    <% @project.comments.each do |comment| %>
+      <% if comment.user != @project.owner %>
+      <ul>
+        <li>  <p><em><%= comment.created_at.strftime("%B %d,%Y") %></em> :   <strong><%= comment.comment_text %></strong> </p>
+        </li>
+      </ul>
+      <% end %>
+    <% end %>
+
+<%if @project.owner == current_user%>
     <%= render 'owner_show'%>
     <%else%>
     <%= render 'user_show', {project: @project, pledge: @pledge} %>
+<% end %>
 
 <h2>Rewards</h2>
 

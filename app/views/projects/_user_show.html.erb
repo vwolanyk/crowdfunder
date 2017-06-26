@@ -1,3 +1,8 @@
+<h2>Comment on the Project</h2>
+<%= render 'form_comment', {project: @project,comment: @comment} %>
+
+
+<h2>Pledge </h2>
 <%= form_for [project, pledge] do |f| %>
 
 <% if pledge.errors.any? %>
