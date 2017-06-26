@@ -10,11 +10,11 @@
   <% total_pledges << pledge.dollar_amount %>
 <% end %>
 
-<p>Total contributions: $<%= "#{ total_pledges.sum }" %></p>
+<p>Total given: $<%= "#{ total_pledges.sum }" %></p>
 
-<p>Contact me: <%= mail_to @user.email, @user.email %></p>
+<p>Contact <%= "#{ @user.first_name }" %>: <%= mail_to @user.email, @user.email %></p>
 
-<h2>Projects I Own</h2>
+<h2>Projects <%= "#{ @user.first_name }" %> Owns</h2>
 <ul>
   <% @user.owned_projects.each do |project| %>
     <li>
@@ -28,10 +28,16 @@
 </ul>
 
 <%# Might need to create a 'backed_projects' association for this: %>
-<h2>Projects I've Backed</h2>
-<%# Iterate the same way the owned_projects one did? %>
-<p>Project: </p>
-<p>I pledged: </p>
+<h2>Projects <%= "#{ @user.first_name }" %> Supports</h2>
+<ul>
+  <% @user.pledged_projects.each do |pledge| %>
+    <li>
+      <h3><%= link_to pledge.project_id, project_url %></h3>
+      <p><%= "#{ @user.first_name }" %> gave: <%= pledge.dollar_amount %></p>
+    </li>
+  <% end %>
+</ul>
+
 
 <%# Dunno if this is gonna work at all: %>
 <% if @user == current_user %>
