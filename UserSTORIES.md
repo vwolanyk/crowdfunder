@@ -1,6 +1,6 @@
 **Project owners**
 
-As a project owner, when I go to my project’s page, I should see a list of who has backed my project
+<!-- As a project owner, when I go to my project’s page, I should see a list of who has backed my project -->
 
 #_Vlad_#
 As a project owner, when I create a new project, I should be able to upload a picture from my computer instead of linking to an online image (https://github.com/carrierwaveuploader/carrierwave)
@@ -15,7 +15,7 @@ As a user if past deadline for project see a different view
 
 **Project page**
 
-As a user, when I go to a project’s page, I should see how much money has been pledged so far
+<!-- As a user, when I go to a project’s page, I should see how much money has been pledged so far -->
 
 As a user, when I go to a project’s page, it should tell me if I have already backed that project or not
 
@@ -37,7 +37,7 @@ Add error messages to the project, pledge, sign up, and login forms so that if a
 
 #**Mike**#
 
-As a user I should be able to visit my profile page and see a list of all the projects I have backed, the total amount I have pledged on the site, and a list of all the projects I own
+<!-- As a user I should be able to visit my profile page and see a list of all the projects I have backed, the total amount I have pledged on the site, and a list of all the projects I own -->
 
 
 
