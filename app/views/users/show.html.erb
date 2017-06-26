@@ -6,16 +6,12 @@
 
 <p>Member since <%= @user.created_at.strftime("%A %B %d %Y") %></p>
 
-<p>
-  Total contributions:
-  <%= total_pledges = [] %>
-  <% @user.pledged_projects.each do |pledge| %>
-    <% total_pledges << pledge.dollar_amount %>
-    <%= "#{ total_pledges.sum }" %>
-  <% end %>
-  <%# This method isn't working. Need a line of SQL, maybe, like... %>
-  <%# SELECT * FROM pledges WHERE user_id = ... %>
-</p>
+<% total_pledges = [0, 0] %>
+<% @user.pledged_projects.each do |pledge| %>
+  <% total_pledges << pledge.dollar_amount %>
+<% end %>
+
+<p>Total contributions: <%= "#{ total_pledges.sum }" %></p>
 
 <p>Contact me: <%= mail_to @user.email, @user.email %></p>
 
