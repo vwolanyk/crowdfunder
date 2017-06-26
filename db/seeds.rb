@@ -3,6 +3,47 @@ Reward.destroy_all
 User.destroy_all
 Project.destroy_all
 
+
+categories = Category.create([
+  { :name => 'Art' },
+  { :name => 'Science' },
+  { :name => 'Technology' },
+  { :name => 'Music' },
+  { :name => 'Film' },
+  { :name => 'Television' },
+  { :name => 'The Internet' },
+  { :name => 'Outer Space' },
+  { :name => 'Biology' },
+  { :name => 'Cooking' },
+  { :name => 'Food' },
+  { :name => 'Automotive' },
+  { :name => 'Boating' },
+  { :name => 'Flying' },
+  { :name => 'Sports' },
+  { :name => 'Jogging' },
+  { :name => 'Serious Business' },
+  { :name => 'Dance' },
+  { :name => 'History' },
+  { :name => 'Construction' },
+  { :name => 'Environment' },
+  { :name => 'Medical' },
+  { :name => 'Fashion' },
+  { :name => 'Photography' },
+  { :name => 'Logging' },
+  { :name => 'Tobogganing' },
+  { :name => 'Diving Tricks' },
+  { :name => 'Pizza Innovation' },
+  { :name => 'Life Coaching' },
+  { :name => 'Creative Writing' },
+  { :name => 'Typesetting' },
+  { :name => 'Farming' },
+  { :name => 'Travel' },
+  { :name => 'Vacation' },
+  { :name => 'Politics' },
+  { :name => 'Haircuts' },
+  { :name => 'BBQ' }
+])
+
 20.times do
   project = Project.create!(
               title: Faker::App.name,

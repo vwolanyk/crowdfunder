@@ -41,9 +41,12 @@
   </div>
 
   <div>
-    <%= f.label :category %>
-    <%= f.text_field :category %>
+    <%= f.label :categories %>
+    <%= f.select :category_ids, options_for_select(Category.all.name), {}, {:multiple => true} %>
   </div>
+
+
+
 
   <%= f.submit %>
 <% end %>
