@@ -10,7 +10,7 @@ Project.destroy_all
               goal: rand(100000),
               start_date: Time.now.utc,
               end_date: Time.now.utc + rand(20).days,
-              owner: User.first
+              owner_id: rand(3)
             )
 
   5.times do
