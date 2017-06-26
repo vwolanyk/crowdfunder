@@ -42,8 +42,12 @@
 
   <div>
     <%= f.label :categories %>
-    <%= f.select :category_ids, options_for_select(Category.all.collect), { |category| [category.name, category_id] }, {:multiple => true} %>
+    <%= f.select :category_ids, options_from_collection_for_select(Category.all, :id, :name), {}, {:multiple => true} %>
   </div>
+
+
+
+
 
 
 
