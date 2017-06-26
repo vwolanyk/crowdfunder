@@ -3,6 +3,10 @@
 
 <h1><%= "#{ @user.first_name } #{ @user.last_name }" %></h1>
 
+<% if @user.image.present? %>
+  <%= image_tag @user.image %>
+<% end %>
+
 <p>Member since <%= @user.created_at.strftime("%A %B %d %Y") %></p>
 
 <% total_pledges = [] %>
@@ -10,17 +14,14 @@
   <% total_pledges << pledge.dollar_amount %>
 <% end %>
 
-<p>Total contributions: $<%= "#{ total_pledges.sum }" %></p>
+<p>Total given: <%= number_to_currency(total_pledges.sum) %></p>
 
-<p>Contact me: <%= mail_to @user.email, @user.email %></p>
+<p>Contact <%= "#{ @user.first_name }" %>: <%= mail_to @user.email, @user.email %></p>
 
-<h2>Projects I Own</h2>
+<h2>Projects <%= "#{ @user.first_name }" %> Owns</h2>
 <ul>
   <% @user.owned_projects.each do |project| %>
     <li>
-      <% if project.image.present? %>
-        <%= image_tag project.image %>
-      <% end %>
       <h3><%= link_to project.title, project %></h3>
       <p>Deadline: <%= project.end_date.strftime("%A %b %d %Y") %></p>
     </li>
@@ -28,14 +29,12 @@
 </ul>
 
 <%# Might need to create a 'backed_projects' association for this: %>
-<h2>Projects I've Backed</h2>
-<%# Iterate the same way the owned_projects one did? %>
-<p>Project: </p>
-<p>I pledged: </p>
-
-<%# Dunno if this is gonna work at all: %>
-<% if @user == current_user %>
-  <h2>Edit My Details?</h2>
-  <% render 'form' %>
-  <%# Needs to be a link! %>
-<% end %>
+<h2>Projects <%= "#{ @user.first_name }" %> Supports</h2>
+<ul>
+  <% @user.pledged_projects.each do |pledge| %>
+    <li>
+      <h3><%= link_to Project.find(pledge.project.id).title, project_url(pledge.project.id) %></h3>
+      <p><%= "#{ @user.first_name }" %> gave: <%= number_to_currency(pledge.dollar_amount) %></p>
+    </li>
+  <% end %>
+</ul>
