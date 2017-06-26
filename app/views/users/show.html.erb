@@ -1,5 +1,4 @@
-<% @user = current_user %>
-<%# Temporary. Will need replacing to make this view fully-dynamic. %>
+
 
 <h1><%= "#{ @user.first_name } #{ @user.last_name }" %></h1>
 
@@ -14,9 +13,9 @@
   <% total_pledges << pledge.dollar_amount %>
 <% end %>
 
-<p>Total given: <%= number_to_currency(total_pledges.sum) %></p>
+<p>Total contributions: <%= number_to_currency(total_pledges.sum) %></p>
 
-<p>Contact <%= "#{ @user.first_name }" %>: <%= mail_to @user.email, @user.email %></p>
+<p><%= mail_to @user.email, "Email #{ @user.first_name }" %></p>
 
 <h2>Projects <%= "#{ @user.first_name }" %> Owns</h2>
 <ul>
@@ -34,7 +33,7 @@
   <% @user.pledged_projects.each do |pledge| %>
     <li>
       <h3><%= link_to Project.find(pledge.project.id).title, project_url(pledge.project.id) %></h3>
-      <p><%= "#{ @user.first_name }" %> gave: <%= number_to_currency(pledge.dollar_amount) %></p>
+      <p><%= "#{ @user.first_name }" %> gave <%= number_to_currency(pledge.dollar_amount) %></p>
     </li>
   <% end %>
 </ul>
