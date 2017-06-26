@@ -14,7 +14,7 @@
   <% total_pledges << pledge.dollar_amount %>
 <% end %>
 
-<p>Total given: $<%= "#{ total_pledges.sum }" %></p>
+<p>Total given: <%= number_to_currency(total_pledges.sum) %></p>
 
 <p>Contact <%= "#{ @user.first_name }" %>: <%= mail_to @user.email, @user.email %></p>
 
@@ -22,9 +22,6 @@
 <ul>
   <% @user.owned_projects.each do |project| %>
     <li>
-      <% if project.image.present? %>
-        <%= image_tag project.image %>
-      <% end %>
       <h3><%= link_to project.title, project %></h3>
       <p>Deadline: <%= project.end_date.strftime("%A %b %d %Y") %></p>
     </li>
@@ -36,8 +33,8 @@
 <ul>
   <% @user.pledged_projects.each do |pledge| %>
     <li>
-      <h3><%= link_to pledge.project_id, project_url %></h3>
-      <p><%= "#{ @user.first_name }" %> gave: <%= pledge.dollar_amount %></p>
+      <h3><%= link_to Project.find(pledge.project.id).title, project_url(pledge.project.id) %></h3>
+      <p><%= "#{ @user.first_name }" %> gave: <%= number_to_currency(pledge.dollar_amount) %></p>
     </li>
   <% end %>
 </ul>
