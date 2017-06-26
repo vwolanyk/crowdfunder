@@ -1,3 +1,8 @@
+<% content_for :special_header do %>
+  <%= paginate @projects %>
+  <%= page_entries_info @projects %>
+<% end %>
+
 <% @projects.each do |project| %>
   <article class="project">
     <%= link_to project, class: 'project-link' do %>
@@ -15,6 +20,3 @@
     <% end %>
   </article>
 <% end %>
-
-<%= paginate @projects %>
-<%= page_entries_info @projects %>

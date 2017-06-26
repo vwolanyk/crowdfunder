@@ -27,6 +27,7 @@
 
         <% end %>
       </nav>
+      <%= yield :special_header %>
     </header>
 
     <% flash.each do |key, message| %>
@@ -37,8 +38,8 @@
       <%= yield %>
     </main>
 
-    <footer class="site-footer">
+    <!-- <footer class="site-footer">
       <small>A Bitmaker assignment</small>
-    </footer>
+    </footer> -->
   </body>
 </html>
