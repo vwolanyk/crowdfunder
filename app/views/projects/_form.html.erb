@@ -45,13 +45,5 @@
     <%= f.select :category_ids, options_from_collection_for_select(Category.order("name ASC"), :id, :name), {include_blank: false, include_hidden: false}, {:multiple => true} %>
   </div>
 
-  = f.input :category, :as => :select, :label => false, :collection => Choices["Categories"], include_blank: false, include_hidden: false
-
-
-
-
-
-
-
   <%= f.submit %>
 <% end %>
