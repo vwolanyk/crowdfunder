@@ -34,6 +34,7 @@ html {
 header.site-header {
     float: left;
     width: 20%;
+    padding-top: 20px;
 }
 
 main {
@@ -58,6 +59,7 @@ body {
 .site-nav {
   text-decoration: none;
   text-align: left;
+  line-height: 30px;
 
 }
 
@@ -72,6 +74,10 @@ body {
   text-align: center;
   // line-height: 50px;
   font-size: 1.5rem;
+}
+
+h1.logo {
+    padding-bottom: 20px;
 }
 
 .project {
