@@ -3,6 +3,10 @@
 
 <h1><%= "#{ @user.first_name } #{ @user.last_name }" %></h1>
 
+<% if @user.image.present? %>
+  <%= image_tag @user.image %>
+<% end %>
+
 <p>Member since <%= @user.created_at.strftime("%A %B %d %Y") %></p>
 
 <% total_pledges = [] %>
