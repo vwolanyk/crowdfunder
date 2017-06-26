@@ -8,6 +8,22 @@
 
 <h2>Projects I Own</h2>
 
+<ul>
+  <% @user.owned_projects.each do |project| %>
+    <li>
+
+      <% if project.image.present? %>
+        <%= image_tag project.image %>
+      <% end %>
+
+      <%= link_to project.title, project %>
+
+      Deadline:
+      <%= project.end_date.strftime("%A %b %d %Y") %>
+
+    </li>
+    <hr>
+</ul>
 
 <h2>Projects I've Backed</h2>
 Project:
