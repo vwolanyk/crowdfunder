@@ -5,7 +5,7 @@
 
 <p>Member since <%= @user.created_at.strftime("%A %B %d %Y") %></p>
 
-<% total_pledges = [0, 0] %>
+<% total_pledges = [] %>
 <% @user.pledged_projects.each do |pledge| %>
   <% total_pledges << pledge.dollar_amount %>
 <% end %>
