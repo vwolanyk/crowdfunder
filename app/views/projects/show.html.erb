@@ -13,7 +13,7 @@
 
 <% if @project.comments.where(:user => @project.owner).exists? %>
 <h2>Project Updates</h2>
-    <% @project.comments.each do |comment| %>
+    <% @project.comments.reverse.each do |comment| %>
       <% if comment.user == @project.owner %>
       <ul>
         <li>  <p><%= comment.created_at.strftime("%B %d,%Y") %></p>
