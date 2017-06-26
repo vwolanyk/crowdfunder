@@ -7,10 +7,15 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    @project = Project.find(params[:id])
-    @pledge = Pledge.new
-    @owner = @project.owner
-    @comment = Comment.new
+    if current_user
+      @project = Project.find(params[:id])
+      @pledge = Pledge.new
+      @comment = Comment.new
+    else
+
+      redirect_back_or_to projects_path , notice: "You must Login or Register to View Projects"
+
+  end
   end
 
   def new

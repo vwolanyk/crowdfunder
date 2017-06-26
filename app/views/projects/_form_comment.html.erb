@@ -1,0 +1,19 @@
+
+<%= form_for [project, comment] do |f| %>
+
+<% if comment.errors.any? %>
+    <div id="error_explanation">
+      <h3>There are <%= comment.errors.count %> issues, please try again:</h3>
+      <ol>
+      <% comment.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ol>
+    </div>
+  <% end %>
+
+  <%= f.label :comment_text%>
+  <%= f.text_field :comment_text %>
+
+  <%= f.submit "Submit" %>
+<% end %>
