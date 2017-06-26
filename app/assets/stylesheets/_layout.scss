@@ -1,11 +1,64 @@
-.site-header {
-  text-align: center;
-  margin-bottom: 1rem;
+html {
+  width: 100%;
 }
+
+// .site-header {
+//     float: left;
+//     position: absolute;
+//     margin-top: 50px;
+//     height: 100%; /* 100% Full-height */
+//     width: 0; /* 0 width - change this with JavaScript */
+//     z-index: 1; /* Stay on top */
+//     top: 0;
+//     left: 0;
+//     background-color: #111; /* Black*/
+//     overflow-x: hidden; /* Disable horizontal scroll */
+//     padding-top: 60px; /* Place content 60px from the top */
+//     transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+// }
+
+// .site-nav a {
+//     padding: 8px 8px 8px 32px;
+//     text-decoration: none;
+//     font-size: 25px;
+//     color: #818181;
+//     display: block;
+//     transition: 0.3s
+// }
+
+.logo {
+  text-align: left;
+}
+
+.site-header {
+  float: left;
+  text-align: center;
+  margin-bottom: 500px;
+  font-family: 200 16px/1.5 'Proxima Nova', "Helvetica Neue", Helvetica, Arial, sans-serif;
+  width: 20%;
+  background-color: #ebebfa;
+  padding-bottom: 30px;
+}
+
+.site-nav {
+  text-decoration: none;
+  text-align: left;
+
+}
+
+//
+// .container {
+//   width: 900px;
+//   margin: auto;
+// }
 
 .logo {
   margin: 0;
   text-align: center;
   line-height: 50px;
   font-size: 1.5rem;
+}
+
+.project {
+  left: 500px;
 }
