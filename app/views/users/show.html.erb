@@ -1,6 +1,5 @@
-<%# User profile page is fully public - no login required %>
-
 <% @user = current_user %>
+<%# Temporary. Will need replacing to make this view fully-dynamic. %>
 
 <h1><%= "#{ @user.first_name } #{ @user.last_name }" %></h1>
 
@@ -11,12 +10,9 @@
   <% total_pledges << pledge.dollar_amount %>
 <% end %>
 
-<p>Total contributions: <%= "#{ total_pledges.sum }" %></p>
+<p>Total contributions: $<%= "#{ total_pledges.sum }" %></p>
 
 <p>Contact me: <%= mail_to @user.email, @user.email %></p>
-
-<hr>
-<%# These 'hr' lines are just a visual aid for while the page is un-CSS'd. %>
 
 <h2>Projects I Own</h2>
 <ul>
@@ -28,7 +24,6 @@
       <h3><%= link_to project.title, project %></h3>
       <p>Deadline: <%= project.end_date.strftime("%A %b %d %Y") %></p>
     </li>
-    <hr> <%# I feel like this hr is 'hidden'. Commenting for findability. %>
   <% end %>
 </ul>
 
@@ -37,8 +32,6 @@
 <%# Iterate the same way the owned_projects one did? %>
 <p>Project: </p>
 <p>I pledged: </p>
-
-
 
 <%# Dunno if this is gonna work at all: %>
 <% if @user == current_user %>
