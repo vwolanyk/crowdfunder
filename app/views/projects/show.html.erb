@@ -64,7 +64,7 @@
 <ul>
   <% @project.categories.each do |category| %>
     <li>
-      <p> <%= category.name %> </p>
+      <p> <%= link_to category.name, category %> </p>
     </li>
   <% end %>
 </ul>
