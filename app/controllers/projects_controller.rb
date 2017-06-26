@@ -27,16 +27,27 @@ class ProjectsController < ApplicationController
     @project = Project.new(project_params)
     @project.owner = current_user
 
-    if @project.save
+    params[:project][:category_ids].each do |category_id|
+      # next if category_id == ""
+      @project.categories << Category.find(category_id)
+    end
 
+    if @project.save
       redirect_to projects_url
     else
       render :new
-    end
-   end
+    end#if
+  end#def
 
   private
   def project_params
-    params.require(:project).permit(:title, :description, :goal, :start_date, :end_date, :image)
+    params.require(:project).permit(
+      :title,
+      :description,
+      :goal,
+      :start_date,
+      :end_date,
+      :image
+    )
   end
 end
