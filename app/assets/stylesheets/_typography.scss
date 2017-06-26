@@ -13,10 +13,13 @@ html {
 h1 {
   font-family: 'Proxima Nova', "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #4B4B4B;
+  text-transform: uppercase;
 }
-h2,
-h3,
-h4,
+
+div {
+  text-transform: uppercase;
+}
+
 h5,
 h6 {
   font-family: 'Proxima Nova', "Helvetica Neue", Helvetica, Arial, sans-serif;
