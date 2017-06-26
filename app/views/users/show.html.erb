@@ -1,6 +1,8 @@
 <%# User profile page is fully public - no login required %>
 
-<h1><%= @user.first_name %> <%= @user.last_name %></h1>
+<% @user = current_user %>
+
+<h1><% @user.first_name %> <% @user.last_name %></h1>
 
 <p>Member since <%= @user.created_at.strftime("%A %B %d %Y") %></p>
 
@@ -29,6 +31,7 @@
       <p>Deadline: <%= project.end_date.strftime("%A %b %d %Y") %></p>
     </li>
     <hr> <%# I feel like this hr is 'hidden'. Commenting for findability. %>
+  <% end %>
 </ul>
 
 <%# Might need to create a 'backed_projects' association for this: %>
