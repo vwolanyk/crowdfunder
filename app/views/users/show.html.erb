@@ -1,3 +1,5 @@
+<%# User profile page is fully public - no login required %>
+
 <h1><%= @user.first_name %> <%= @user.last_name %></h1>
 
 <p>Member since <%= @user.created_at.strftime("%A %B %d %Y") %> </p>
@@ -11,21 +13,16 @@
 <%# These 'hr' lines are just a visual aid for while the page is un-CSS'd. %>
 
 <h2>Projects I Own</h2>
-
 <ul>
   <% @user.owned_projects.each do |project| %>
     <li>
-
       <% if project.image.present? %>
         <%= image_tag project.image %>
       <% end %>
-
-      <%= link_to project.title, project %>
-
-      Deadline: <%= project.end_date.strftime("%A %b %d %Y") %>
-
+      <h3><%= link_to project.title, project %></h3>
+      <p>Deadline: <%= project.end_date.strftime("%A %b %d %Y") %></p>
     </li>
-    <hr>
+    <hr> <%# I feel like this hr is 'hidden'. Commenting for findability. %>
 </ul>
 
 <%# Might need to create a 'backed_projects' association for this: %>
@@ -33,3 +30,11 @@
 <%# Iterate the same way the owned_projects one did? %>
 Project:
 I pledged:
+
+
+
+<%# Dunno if this is gonna work at all: %>
+<% if @user == current_user %>
+  <h2>Edit My Details?</h2>
+  <% render 'form' %>
+<% end %>
