@@ -60,6 +60,16 @@ categories = Category.create([
   { :name => 'Scream Therapy' }
 ])
 
+50.times do
+  User.create!(
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    email: Faker::Internet.free_email,
+    password: 'password',
+    password_confirmation: 'password'
+  )
+end
+
 20.times do
   project = Project.create!(
               title: Faker::App.name,
@@ -67,7 +77,7 @@ categories = Category.create([
               goal: rand(100000),
               start_date: Time.now.utc,
               end_date: Time.now.utc + rand(20).days,
-              owner_id: rand(1..8)
+              owner_id: User.all.sample.id
             )
 
   5.times do
@@ -76,16 +86,6 @@ categories = Category.create([
       dollar_amount: rand(100),
     )
   end
-end
-
-5.times do
-  User.create!(
-    first_name: Faker::Name.first_name,
-    last_name: Faker::Name.last_name,
-    email: Faker::Internet.free_email,
-    password: 'password',
-    password_confirmation: 'password'
-  )
 end
 
 20.times do
