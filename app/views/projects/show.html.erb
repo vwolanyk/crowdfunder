@@ -1,29 +1,67 @@
+
+<% if @project.project_past_end_date? %>
+<h1>Project PAST DEADLINE</h1>
+<% end %>
+
 <h1><%= @project.title %></h1>
 
-<% if @project.image.present? %>
-  <%= image_tag @project.image %>
+<% if @project.avatar.present? %>
+  <%= image_tag @project.avatar %>
 <% end %>
 
 <p><%= @project.description %></p>
 <p>Goal: <%= number_to_currency(@project.goal) %></p>
+<p>Funds Raised: <%= number_to_currency(@project.pledges.sum(:dollar_amount)) %> </p>
 <p>Fundraising starts: <%= @project.start_date.strftime("%A %b %d %Y") %></p>
 <p>Deadline: <%= @project.end_date.strftime("%A %b %d %Y") %></p>
 
-<%= form_for [@project, Pledge.new] do |f| %>
-  <%= f.number_field :dollar_amount, value: @project.rewards.minimum(:dollar_amount), step: 0.01 %>
-  <%= f.submit "Pledge" %>
+<% if @project.comments.where(:user => @project.owner).exists? %>
+<h2>Project Updates</h2>
+    <% @project.comments.reverse.each do |comment| %>
+      <% if comment.user == @project.owner %>
+      <ul>
+        <li>  <p><%= comment.created_at.strftime("%B %d,%Y") %></p>
+              <p><%= comment.comment_text %></p>
+        </li>
+      </ul>
+      <% end %>
+    <% end %>
 <% end %>
 
+<h2>Comments</h2>
+    <% @project.comments.reverse.each do |comment| %>
+      <% if comment.user != @project.owner %>
+      <ul>
+        <li>  <p><em><%= comment.created_at.strftime("%B %d,%Y") %></em> :   <strong><%= comment.comment_text %></strong> </p>
+        </li>
+      </ul>
+      <% end %>
+    <% end %>
+
+<%if @project.owner == current_user%>
+    <%= render 'owner_show'%>
+    <%else%>
+    <%= render 'user_show', {project: @project, pledge: @pledge} %>
+<% end %>
+
+<% unless @project.project_past_end_date? %>
 <h2>Rewards</h2>
+
+<% if @project.owner == current_user %>
+<%= link_to "Add New Reward", new_project_reward_path(@project) %>
+<% end %>
+
+
 <% @project.rewards.each do |reward| %>
   <p><%= number_to_currency(reward.dollar_amount) %></p>
   <p><%= reward.description %></p>
 
-  <p>
-    <small>
-      <%= link_to "Remove reward", project_reward_path(@project, reward), method: 'delete' %>
-    </small>
-  </p>
+  <% if @project.owner == current_user %>
+    <p>
+      <small>
+        <%= link_to "Remove reward", project_reward_path(@project, reward), method: 'delete' %>
+      </small>
+    </p>
+  <% end %>
 <% end %>
-
-<%= link_to "Add new reward", new_project_reward_path(@project) %>
+<% end %>

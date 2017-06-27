@@ -13,12 +13,19 @@
 
   <body>
     <header class="site-header">
-      <h1 class="logo">CROWDFUNDER</h1>
+
+      <h1 class="logo"><%= link_to 'CROWDFUNDER', root_url %></h1>
 
       <nav class="site-nav">
         <% if current_user %>
         <ul>
+
           <li><%= link_to "LOGOUT", user_sessions_path, method: :delete %></li>
+
+          
+          <li><%= link_to "My Profile Page", user_path(current_user.id) %></li>
+
+
         <% else %>
           <li><%= link_to "REGISTER", new_user_path %></li>
           <li><%= link_to "LOGIN", :login %></li>
@@ -30,9 +37,23 @@
       <%= yield :special_header %>
     </header>
 
-    <% flash.each do |key, message| %>
-      <div class="flash-<%= key %>"><%= message %></div>
-    <% end %>
+    <div class="error_explanation">
+            <% if flash.any? %>
+            <% flash.each do |key, value| %>
+            <h3 class="<%= key %>">
+              <%= value %>
+            </h3>
+            <% end %>
+           <% end %>
+         </div>
+
+         <%= form_tag(projects_path, method: :get) do %>
+         <%= text_field_tag :search, params[:search], placeholder: "Search" %>
+         <%= submit_tag "Search" %>
+         <% end %>
+        
+
+
 
     <main>
       <%= yield %>
