@@ -3,12 +3,14 @@
   <%= page_entries_info @projects %>
 <% end %>
 
+
+
 <% @projects.each do |project| %>
   <article class="project">
     <%= link_to project, class: 'project-link' do %>
       <figure class="project-image">
-        <% if project.image %>
-          <%= image_tag project.image %>
+        <% if project.avatar? %>
+          <%= image_tag project.avatar %>
         <% else %>
           <%= image_tag ActionController::Base.helpers.asset_path("puppy.jpg") %>
         <% end %>

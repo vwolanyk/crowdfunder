@@ -1,4 +1,15 @@
 <%= form_for @user do |f| %>
+<% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h3>There are <%= @user.errors.count %> issues, please try again:</h3>
+      <ol>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ol>
+    </div>
+  <% end %>
+
   <div class="field">
      <%= f.label :first_name %><br />
      <%= f.text_field :first_name %>
@@ -12,6 +23,11 @@
   <div class="field">
      <%= f.label :email %><br />
      <%= f.text_field :email %>
+  </div>
+
+  <div>
+    <%= f.label "Profile Pic" %>
+    <%= f.file_field :avatars %>
   </div>
 
   <div class="field">

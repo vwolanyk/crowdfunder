@@ -1,0 +1,21 @@
+<h2>Comment on the Project</h2>
+<%= render 'form_comment', {project: @project,comment: @comment} %>
+
+
+<h2>Pledge </h2>
+<%= form_for [project, pledge] do |f| %>
+
+<% if pledge.errors.any? %>
+    <div id="error_explanation">
+      <h3>There are <%= pledge.errors.count %> issues, please try again:</h3>
+      <ol>
+      <% pledge.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ol>
+    </div>
+  <% end %>
+
+  <%= f.number_field :dollar_amount, value: project.rewards.minimum(:dollar_amount), step: 0.01 %>
+  <%= f.submit "Pledge" %>
+<% end %>

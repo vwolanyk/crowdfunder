@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170621010622) do
+
+ActiveRecord::Schema.define(version: 20170626210843) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "comments", force: :cascade do |t|
+    t.text "comment_text"
+    t.bigint "project_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
+  end
 
   create_table "pledges", id: :serial, force: :cascade do |t|
     t.integer "user_id"
@@ -35,6 +45,7 @@ ActiveRecord::Schema.define(version: 20170621010622) do
     t.datetime "updated_at"
     t.string "image"
     t.bigint "owner_id"
+    t.string "avatar"
     t.index ["owner_id"], name: "index_projects_on_owner_id"
   end
 
@@ -57,6 +68,8 @@ ActiveRecord::Schema.define(version: 20170621010622) do
     t.string "remember_me_token"
     t.datetime "remember_me_token_expires_at"
     t.boolean "admin", default: false
+    t.string "image"
+    t.string "avatars"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["remember_me_token"], name: "index_users_on_remember_me_token"
   end
