@@ -2,8 +2,8 @@
 
 <!-- As a project owner, when I go to my project’s page, I should see a list of who has backed my project -->
 
-#_Vlad_#
-As a project owner, when I create a new project, I should be able to upload a picture from my computer instead of linking to an online image (https://github.com/carrierwaveuploader/carrierwave)
+<!-- #_Vlad_#
+As a project owner, when I create a new project, I should be able to upload a picture from my computer instead of linking to an online image (https://github.com/carrierwaveuploader/carrierwave) -->
 
 <!-- As a project owner I should be able to post updates on the progress of my project. -->
 

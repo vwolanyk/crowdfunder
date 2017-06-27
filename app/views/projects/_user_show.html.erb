@@ -1,6 +1,7 @@
+<% unless @project.project_past_end_date? %>
+
 <h2>Comment on the Project</h2>
 <%= render 'form_comment', {project: @project,comment: @comment} %>
-
 
 <h2>Pledge </h2>
 <%= form_for [project, pledge] do |f| %>
@@ -18,4 +19,5 @@
 
   <%= f.number_field :dollar_amount, value: project.rewards.minimum(:dollar_amount), step: 0.01 %>
   <%= f.submit "Pledge" %>
+<% end %>
 <% end %>

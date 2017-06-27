@@ -9,8 +9,9 @@ class Project < ActiveRecord::Base
   belongs_to :owner, class_name: 'User'
 
   validates :title, :description, :goal, :start_date, :end_date, presence: true
-  validate :start_date_cannot_be_in_the_past, :end_date_cannot_be_less_than_start_date
+  validate :start_date_cannot_be_in_the_past, :end_date_cannot_be_less_than_start_date, :on => :create
 
+  # helper_method :project_past_end_date?
 
   def start_date_cannot_be_in_the_past
     if start_date < Date.today
@@ -24,6 +25,9 @@ class Project < ActiveRecord::Base
     end
   end
 
+  def project_past_end_date?
+  end_date < Date.today
+  end
 
 end
 
