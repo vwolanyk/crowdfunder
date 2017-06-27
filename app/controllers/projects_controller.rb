@@ -2,8 +2,15 @@ class ProjectsController < ApplicationController
   before_action :require_login, only: [:new, :create]
 
   def index
-    @projects = Project.page(params[:page]).per(10)
-    @projects = @projects.order(:end_date)
+
+    if params[:search]
+    @projects = Project.where("title ILIKE ?", "#{params[:search]}")
+  else
+    @projects = Project.page(params[:page]).per(10).order(:end_date)
+
+  end
+
+
   end
 
   def show
@@ -25,6 +32,9 @@ class ProjectsController < ApplicationController
 
   def create
     @project = Project.new(project_params)
+
+    @project.image = project_params[:image]
+
     @project.owner = current_user
 
     params[:project][:category_ids].each do |category_id|
@@ -39,8 +49,24 @@ class ProjectsController < ApplicationController
     end#if
   end#def
 
+   def edit
+    @project = Project.find(params[:id])
+  end
+
+  def update
+    @project = Project.find(params[:id])
+
+    if @project.update(project_params)
+      flash[:alert] = "The Project has been updated"
+      redirect_to projects_path(@project.id)
+    else
+      redirect_back_or_to @project
+    end
+  end
+
   private
   def project_params
+
     params.require(:project).permit(
       :title,
       :description,
@@ -49,5 +75,6 @@ class ProjectsController < ApplicationController
       :end_date,
       :image
     )
+
   end
 end

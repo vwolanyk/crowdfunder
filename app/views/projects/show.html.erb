@@ -1,8 +1,12 @@
+
+<% if @project.project_past_end_date? %>
+<h1>Project PAST DEADLINE</h1>
+<% end %>
+
 <h1><%= @project.title %></h1>
 
-
-<% if @project.image.present? %>
-  <%= image_tag @project.image %>
+<% if @project.avatar.present? %>
+  <%= image_tag @project.avatar %>
 <% end %>
 
 <p><%= @project.description %></p>
@@ -40,6 +44,7 @@
     <%= render 'user_show', {project: @project, pledge: @pledge} %>
 <% end %>
 
+<% unless @project.project_past_end_date? %>
 <h2>Rewards</h2>
 
 <% if @project.owner == current_user %>
@@ -60,6 +65,7 @@
   <% end %>
 <% end %>
 
+
 <h2>Categories:</h2>
 <ul>
   <% @project.categories.each do |category| %>
@@ -68,3 +74,4 @@
     </li>
   <% end %>
 </ul>
+
