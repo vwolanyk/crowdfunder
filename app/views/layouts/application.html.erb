@@ -19,9 +19,9 @@
         <% if current_user %>
           <%= link_to "My Profile", '/users/show' %> •
           <%= link_to "Browse Categories", '/categories' %> •
-          <%= link_to "Log Out", :logout, method: :delete %>
+          <%= link_to "Logout", :logout, method: :delete %>
         <% else %>
-          <%= link_to "Register", new_user_path %> |
+          <%= link_to "Register", new_user_path %> •
           <%= link_to "Login", :login %>
         <% end %>
       </nav>
