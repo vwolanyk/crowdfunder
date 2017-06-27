@@ -4,7 +4,7 @@ class ProjectsController < ApplicationController
   def index
 
     if params[:search]
-    @projects = Project.where("title ILIKE ?", "#{params[:search]}")
+    @projects = Project.where("title ILIKE ?", "%#{params[:search]}%")
   else
     @projects = Project.page(params[:page]).per(10).order(:end_date)
 
