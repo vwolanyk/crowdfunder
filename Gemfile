@@ -7,7 +7,7 @@ gem 'kaminari'
 gem 'rails', '~> 5.1.1'
 gem 'puma', '~> 3.0'
 
-# Styles
+r# Styles
 gem 'sass-rails'
 gem 'font-awesome-sass', '~> 4.7.0'
 
