@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
   root "projects#index"
 
   get 'login' => 'user_sessions#new', :as => :login
@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: [:new, :create, :show, :update, :edit]
-  resources :user_sessions, only: [:create, :destroy]
+  resource :user_sessions, only: %i(new create destroy)
   resources :categories, only: [:index, :show]
 
 end

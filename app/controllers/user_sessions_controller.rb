@@ -14,6 +14,7 @@ class UserSessionsController < ApplicationController
 
   def destroy
     logout
-    redirect_to root_url, notice: 'Logged out!'
+    # cookies.delete[:auth_token]
+    redirect_to root_url, notice: 'You are now logged out.'
   end
 end
