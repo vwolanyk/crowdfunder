@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create, :show, :update, :edit]
 
   resources :user_sessions, only: [:create, :destroy]
+  
   resources :categories, only: [:index, :show]
 
 
