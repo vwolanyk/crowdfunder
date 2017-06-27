@@ -1,10 +1,15 @@
 class Project < ActiveRecord::Base
 
-  mount_uploader :avatar, AvatarUploader
+
+  mount_uploader :image, ProjectImageUploader
+
+
+  
 
   has_many :comments
+
   has_many :rewards
-  has_many :pledges
+  has_many :pledges 
   has_many :backers, through: :pledges, source: :user
   belongs_to :owner, class_name: 'User'
 

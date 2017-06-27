@@ -32,9 +32,13 @@ class ProjectsController < ApplicationController
 
   def create
     @project = Project.new(project_params)
+
+    @project.image = project_params[:image]
+
     @project.owner = current_user
 
-    @project.avatar = params[:project][:avatar]
+    
+
 
     if @project.save
 
