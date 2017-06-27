@@ -18,26 +18,21 @@
 
       <nav class="site-nav">
         <% if current_user %>
-
-
-        <ul>
-
-          <li><%= link_to "LOGOUT", user_sessions_path, method: :delete %></li>
-
-        <li><%= link_to "Browse Categories", '/categories' %> </li>
-          <li><%= link_to "My Profile Page", user_path(current_user.id) %></li>
-
-
-        <% else %>
-          <li><%= link_to "REGISTER", new_user_path %></li>
-          <li><%= link_to "LOGIN", :login %></li>
-          <li><%= link_to "CREATE PROJECT", new_project_path %></li>
-        </ul>
-
-
+          <ul>
+            <li><%= link_to "Logout", user_sessions_path, method: :delete %></li>
+            <li><%= link_to "Browse Categories", '/categories' %> </li>
+            <li><%= link_to "My Profile Page", user_path(current_user.id) %></li>
+            <li><%= link_to "Create Project", new_project_path %></li>
+          <% else %>
+            <li><%= link_to "REGISTER", new_user_path %></li>
+            <li><%= link_to "LOGIN", :login %></li>
+            <li><%= link_to "CREATE PROJECT", new_project_path %></li>
+          </ul>
         <% end %>
       </nav>
+
       <%= yield :special_header %>
+
     </header>
 
     <div class="error_explanation">
@@ -54,7 +49,7 @@
          <%= text_field_tag :search, params[:search], placeholder: "Search" %>
          <%= submit_tag "Search" %>
          <% end %>
-        
+
 
 
 
