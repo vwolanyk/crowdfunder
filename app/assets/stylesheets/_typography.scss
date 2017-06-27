@@ -1,15 +1,48 @@
+@font-face {
+    font-family: 'Proxima Nova';
+    src: url('proxima_nova_light.ttf');
+}
+
 html {
-  font-family: $base-font-family;
+  font-family: 'Proxima Nova';
+  color: #4B4B4B;
   font-size: 16px;
   line-height: 1.35;
 }
 
-h1,
-h2,
-h3,
-h4,
+h1 {
+  font-family: 'Proxima Nova', "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #4B4B4B;
+  text-transform: uppercase;
+}
+
+div {
+  text-transform: uppercase;
+}
+
 h5,
 h6 {
-  font-family: $header-font-family;
+  font-family: 'Proxima Nova', "Helvetica Neue", Helvetica, Arial, sans-serif;
   line-height: 1.1;
+}
+
+a:visited, a:link, a:active
+{
+    text-decoration: none;
+    color: #4B4B4B;
+}
+
+a:hover
+  {
+    color: #D1C7D7;
+  }
+
+li {
+   list-style-type: none;
+}
+
+.pagination {
+  text-transform: uppercase;
+  text-align: left;
+  line-height: 30px;
 }
