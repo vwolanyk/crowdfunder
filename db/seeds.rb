@@ -4,7 +4,6 @@ User.destroy_all
 Project.destroy_all
 Category.destroy_all
 
-
 categories = Category.create([
   { :name => 'Art' },
   { :name => 'Science' },
@@ -60,7 +59,7 @@ categories = Category.create([
   { :name => 'Scream Therapy' }
 ])
 
-50.times do
+100.times do
   User.create!(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
@@ -92,13 +91,13 @@ end
   project = Project.all.sample
 
   Pledge.create!(
-    user: User.last,
+    user: User.all.sample,
     project: project,
     dollar_amount: project.rewards.sample.dollar_amount + rand(10)
   )
 end
 
-120.times do
+100.times do
   project = Project.all.sample
 
   project.categories << Category.all.sample #(
