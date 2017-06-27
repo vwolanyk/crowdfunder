@@ -60,13 +60,14 @@ categories = Category.create([
 ])
 
 100.times do
-  User.create!(
+  user = User.create!(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
     email: Faker::Internet.free_email,
     password: 'password',
     password_confirmation: 'password'
   )
+  puts user.first_name + " created"
 end
 
 20.times do
@@ -91,7 +92,8 @@ end
   project = Project.all.sample
 
   Pledge.create!(
-    user: User.all.sample,
+    user: (User.all - [project.owner]).sample,
+
     project: project,
     dollar_amount: project.rewards.sample.dollar_amount + rand(10)
   )
