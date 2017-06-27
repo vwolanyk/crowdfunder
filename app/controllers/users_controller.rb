@@ -5,7 +5,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    @user.avatars = params[:user][:avatars]
+    @user.image = user_params[:image]
     if @user.save
       auto_login(@user)
       redirect_to projects_url
@@ -20,6 +20,6 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation)
+    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :image)
   end
 end

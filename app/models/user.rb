@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   authenticates_with_sorcery!
-    mount_uploader :avatars, AvatarUploader
+    mount_uploader :image, ProjectImageUploader
 
 
   has_many :owned_projects, class_name: 'Project', foreign_key: 'owner_id'
