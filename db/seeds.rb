@@ -2,7 +2,7 @@ Pledge.destroy_all
 Reward.destroy_all
 User.destroy_all
 Project.destroy_all
-Category.destroy_all 
+Category.destroy_all
 
 
 categories = Category.create([
@@ -42,7 +42,16 @@ categories = Category.create([
   { :name => 'Vacation' },
   { :name => 'Politics' },
   { :name => 'Haircuts' },
-  { :name => 'BBQ' }
+  { :name => 'BBQ' },
+  { :name => 'Games' },
+  { :name => 'Zoology' },
+  { :name => 'Horseback Riding' },
+  { :name => 'Soda' },
+  { :name => 'Real Droids' },
+  { :name => 'Renovation' },
+  { :name => 'Bungee Jumping' },
+  { :name => 'Ghostbusters IRL' },
+  { :name => 'Scream Therapy' },
 ])
 
 20.times do
@@ -80,5 +89,13 @@ end
     user: User.last,
     project: project,
     dollar_amount: project.rewards.sample.dollar_amount + rand(10)
+  )
+end
+
+60.times do
+  project = Project.all.sample
+
+  project.categories << Category.create!(
+    name: categories.sample.name
   )
 end
