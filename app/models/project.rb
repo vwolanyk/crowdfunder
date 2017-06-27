@@ -1,4 +1,7 @@
 class Project < ActiveRecord::Base
+
+  mount_uploader :avatar, AvatarUploader
+
   has_many :comments
   has_many :rewards
   has_many :pledges
