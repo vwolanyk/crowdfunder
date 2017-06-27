@@ -92,7 +92,7 @@ end
   )
 end
 
-10.times do
+80.times do
   project = Project.all.sample
 
   project.categories << Category.all.sample #(
