@@ -1,5 +1,9 @@
 source 'https://rubygems.org'
 
+
+# Search Function
+# gem 'searchkick'
+
 # From project instructions
 gem 'kaminari'
 

@@ -2,8 +2,15 @@ class ProjectsController < ApplicationController
   before_action :require_login, only: [:new, :create]
 
   def index
-    @projects = Project.page(params[:page]).per(10)
-    @projects = @projects.order(:end_date)
+
+    if params[:search]
+    @projects = Project.where("title ILIKE ?", "#{params[:search]}")
+  else
+    @projects = Project.page(params[:page]).per(10).order(:end_date)
+
+  end
+
+
   end
 
   def show
@@ -43,7 +50,7 @@ class ProjectsController < ApplicationController
 
   def update
     @project = Project.find(params[:id])
-  
+
     if @project.update(project_params)
       flash[:alert] = "The Project has been updated"
       redirect_to projects_path(@project.id)

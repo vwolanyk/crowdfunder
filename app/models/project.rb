@@ -13,6 +13,7 @@ class Project < ActiveRecord::Base
 
   # helper_method :project_past_end_date?
 
+
   def start_date_cannot_be_in_the_past
     if start_date < Date.today
       errors.add(:start_date, "can't be in the past")

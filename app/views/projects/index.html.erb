@@ -1,8 +1,11 @@
+
+<% unless params[:search] %>
 <% content_for :special_header do %>
+
   <%= paginate @projects %>
   <%= page_entries_info @projects %>
+  <% end %>
 <% end %>
-
 
 
 <% @projects.each do |project| %>
@@ -21,4 +24,5 @@
         <%= "#{time_ago_in_words(project.end_date)} #{( project.end_date > Time.now.utc ) ? 'remaining' : 'past deadline'}" %></time>
     <% end %>
   </article>
+
 <% end %>
