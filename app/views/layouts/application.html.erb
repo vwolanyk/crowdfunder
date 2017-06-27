@@ -19,7 +19,7 @@
       <nav class="site-nav">
         <% if current_user %>
           <ul>
-            <li><%= link_to "Logout", user_sessions_path, method: :delete %></li>
+            <li><%= link_to "Logout", user_sessions_path, method: :destroy %></li>
             <li><%= link_to "Browse Categories", '/categories' %> </li>
             <li><%= link_to "My Profile Page", user_path(current_user.id) %></li>
             <li><%= link_to "Create Project", new_project_path %></li>
