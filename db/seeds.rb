@@ -92,10 +92,10 @@ end
   )
 end
 
-60.times do
+10.times do
   project = Project.all.sample
 
-  project.categories << Category.create!(
-    name: categories.sample.name
-  )
+  project.categories << Category.all.sample #(
+    #name: categories.sample.name
+  #)
 end
