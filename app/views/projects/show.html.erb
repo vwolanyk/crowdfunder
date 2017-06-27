@@ -45,25 +45,27 @@
 <% end %>
 
 <% unless @project.project_past_end_date? %>
-<h2>Rewards</h2>
-
-<% if @project.owner == current_user %>
-<%= link_to "Add New Reward", new_project_reward_path(@project) %>
-<% end %>
-
-
-<% @project.rewards.each do |reward| %>
-  <p><%= number_to_currency(reward.dollar_amount) %></p>
-  <p><%= reward.description %></p>
+  <h2>Rewards</h2>
 
   <% if @project.owner == current_user %>
-    <p>
-      <small>
-        <%= link_to "Remove reward", project_reward_path(@project, reward), method: 'delete' %>
-      </small>
-    </p>
+  <%= link_to "Add New Reward", new_project_reward_path(@project) %>
+  <% end %>
+
+
+  <% @project.rewards.each do |reward| %>
+    <p><%= number_to_currency(reward.dollar_amount) %></p>
+    <p><%= reward.description %></p>
+
+    <% if @project.owner == current_user %>
+      <p>
+        <small>
+          <%= link_to "Remove reward", project_reward_path(@project, reward), method: 'delete' %>
+        </small>
+      </p>
+    <% end %>
   <% end %>
 <% end %>
+
 
 
 <h2>Categories:</h2>
@@ -74,4 +76,3 @@
     </li>
   <% end %>
 </ul>
-
