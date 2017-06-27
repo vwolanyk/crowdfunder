@@ -7,7 +7,11 @@
   <% end %>
 <% end %>
 
-<%= @projects.count %>
+<% if params[:search] %>
+<h1>Search Results(<%= @projects.count %>)</h1>
+<% else %>
+<h1>Total Projects: <%= Project.count %></h1>
+<% end %>
 <% @projects.each do |project| %>
   <article class="project">
     <%= link_to project, class: 'project-link' do %>
