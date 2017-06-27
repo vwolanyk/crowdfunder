@@ -9,7 +9,7 @@ class Project < ActiveRecord::Base
   has_many :comments
 
   has_many :rewards
-  has_many :pledges 
+  has_many :pledges, dependent: :destroy
   has_many :backers, through: :pledges, source: :user
   belongs_to :owner, class_name: 'User'
 
