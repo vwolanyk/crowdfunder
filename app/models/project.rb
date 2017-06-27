@@ -13,6 +13,11 @@ class Project < ActiveRecord::Base
   has_many :backers, through: :pledges, source: :user
   belongs_to :owner, class_name: 'User'
 
+  has_and_belongs_to_many :categories
+
+  # accepts_nested_attributes_for :categories
+
+
   validates :title, :description, :goal, :start_date, :end_date, presence: true
   validate :start_date_cannot_be_in_the_past, :end_date_cannot_be_less_than_start_date, :on => :create
 

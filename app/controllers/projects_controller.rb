@@ -37,16 +37,17 @@ class ProjectsController < ApplicationController
 
     @project.owner = current_user
 
-    
-
+    params[:project][:category_ids].each do |category_id|
+      # next if category_id == ""
+      @project.categories << Category.find(category_id)
+    end
 
     if @project.save
-
       redirect_to projects_url
     else
       render :new
-    end
-   end
+    end#if
+  end#def
 
    def edit
     @project = Project.find(params[:id])
@@ -65,6 +66,15 @@ class ProjectsController < ApplicationController
 
   private
   def project_params
-    params.require(:project).permit(:title, :description, :goal, :start_date, :end_date, :avatar)
+
+    params.require(:project).permit(
+      :title,
+      :description,
+      :goal,
+      :start_date,
+      :end_date,
+      :image
+    )
+
   end
 end

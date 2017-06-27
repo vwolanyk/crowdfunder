@@ -44,5 +44,10 @@
     <%= f.datetime_select :end_date %>
   </div>
 
+  <div>
+    <%= f.label :categories %>
+    <%= f.select :category_ids, options_from_collection_for_select(Category.order("name ASC"), :id, :name), {include_blank: false, include_hidden: false}, {:multiple => true} %>
+  </div>
+
   <%= f.submit %>
 <% end %>

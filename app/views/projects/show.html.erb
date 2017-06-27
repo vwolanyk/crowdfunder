@@ -64,4 +64,14 @@
     </p>
   <% end %>
 <% end %>
-<% end %>
+
+
+<h2>Categories:</h2>
+<ul>
+  <% @project.categories.each do |category| %>
+    <li>
+      <p> <%= link_to category.name, category %> </p>
+    </li>
+  <% end %>
+</ul>
+

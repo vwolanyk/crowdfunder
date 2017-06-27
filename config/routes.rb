@@ -17,9 +17,13 @@ Rails.application.routes.draw do
 
   end
 
+
+
   
   resources :users, only: [:new, :create, :show,:update, :edit]
+
   resources :user_sessions, only: [:create]
+  resources :categories, only: [:index, :show]
 
 
 
