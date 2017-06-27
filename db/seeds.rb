@@ -2,6 +2,7 @@ Pledge.destroy_all
 Reward.destroy_all
 User.destroy_all
 Project.destroy_all
+Category.destroy_all 
 
 
 categories = Category.create([
