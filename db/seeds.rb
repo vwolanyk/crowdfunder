@@ -51,7 +51,13 @@ categories = Category.create([
   { :name => 'Renovation' },
   { :name => 'Bungee Jumping' },
   { :name => 'Ghostbusters IRL' },
-  { :name => 'Scream Therapy' },
+  { :name => 'Pharmacy' },
+  { :name => 'Candy' },
+  { :name => 'VHS Restoration' },
+  { :name => 'Glass Blowing' },
+  { :name => 'Jewelry' },
+  { :name => 'Hula Hoop Tech' },
+  { :name => 'Scream Therapy' }
 ])
 
 20.times do
@@ -92,7 +98,7 @@ end
   )
 end
 
-80.times do
+120.times do
   project = Project.all.sample
 
   project.categories << Category.all.sample #(
