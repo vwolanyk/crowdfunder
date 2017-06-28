@@ -78,6 +78,7 @@ end
               start_date: Time.now.utc,
               end_date: Time.now.utc + rand(20).days,
               owner_id: User.all.sample.id
+
             )
 
   5.times do
