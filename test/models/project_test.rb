@@ -39,5 +39,10 @@ class ProjectTest < ActiveSupport::TestCase
       password_confirmation: 'passpass'
     )
   end
-
+ test 'project_past_end_date?' do
+   project = new_project
+   project.end_date = Date.yesterday
+   project.save
+   assert project.invalid?, 'Project should not save with past end date.'
+ end
 end
