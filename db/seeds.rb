@@ -67,7 +67,7 @@ categories = Category.create([
               goal: rand(100000),
               start_date: Time.now.utc,
               end_date: Time.now.utc + rand(20).days,
-              owner_id: rand(1..8)
+              owner_id: rand(1..5)
             )
 
   5.times do
