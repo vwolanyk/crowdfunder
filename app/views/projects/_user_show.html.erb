@@ -4,6 +4,10 @@
 <%= render 'form_comment', {project: @project,comment: @comment} %>
 
 <h2>Pledge </h2>
+<% if @project.pledges.where(:user => current_user).exists? %>
+<h3>You Have Already Backed This Project!</h3>
+<% else %>
+
 <%= form_for [project, pledge] do |f| %>
 
 <% if pledge.errors.any? %>
@@ -19,5 +23,6 @@
 
   <%= f.number_field :dollar_amount, value: project.rewards.minimum(:dollar_amount), step: 0.01 %>
   <%= f.submit "Pledge" %>
+<% end %>
 <% end %>
 <% end %>

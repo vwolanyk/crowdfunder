@@ -7,7 +7,7 @@ As a project owner, when I create a new project, I should be able to upload a pi
 
 <!-- As a project owner I should be able to post updates on the progress of my project. -->
 
-As a user if past deadline for project see a different view
+<!-- As a user if past deadline for project see a different view -->
 
 
 <!-- As a backer I should be able to leave a comment on a project I have backed -->
